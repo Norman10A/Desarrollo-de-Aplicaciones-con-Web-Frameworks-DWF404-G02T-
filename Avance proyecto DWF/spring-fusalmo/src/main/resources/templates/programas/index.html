@@ -1,0 +1,16 @@
+<th:block th:replace="~{fragments/layout :: layout('Programas', ~{::section})}">
+  <section>
+    <div class="row g-3">
+      <div class="col-md-4" th:each="p : ${programas}">
+        <div class="card h-100">
+          <div style="height:120px;background:#e9ecef"></div>
+          <div class="card-body">
+            <h5 class="card-title" th:text="${p.nombre}">Nombre</h5>
+            <p class="card-text small text-muted" th:text="${#strings.abbreviate(p.descripcion,120)}">Descripción</p>
+            <a class="btn btn-sm btn-primary" th:href="@{'/programas/' + ${p.id}}">Más información</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</th:block>

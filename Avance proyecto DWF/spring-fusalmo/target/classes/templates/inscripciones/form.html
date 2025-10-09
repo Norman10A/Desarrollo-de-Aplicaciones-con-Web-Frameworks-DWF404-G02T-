@@ -1,0 +1,24 @@
+<th:block th:replace="~{fragments/layout :: layout('Inscripción', ~{::section})}">
+  <section class="col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Formulario de inscripción</h5>
+        <div th:if="${ok}" class="alert alert-success">
+          Inscripción enviada. Estado: <strong th:text="${estado}">INSCRITO</strong>.
+        </div>
+        <form method="post" th:action="@{/inscripcion}">
+          <input type="hidden" name="programId" th:value="${programId}">
+          <div class="mb-3">
+            <label class="form-label">ID Estudiante</label>
+            <input class="form-control" name="studentId" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Período</label>
+            <input class="form-control" name="periodo" placeholder="2025-I" required>
+          </div>
+          <button class="btn btn-primary">Inscribirme</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</th:block>
