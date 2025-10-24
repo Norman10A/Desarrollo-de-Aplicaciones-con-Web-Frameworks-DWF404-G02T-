@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fusalmo Cursos</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <div class="row">
+        <div class="brand">
+            <span class="dot"></span> <span>Fusalmo Cursos</span>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="register.html">Registrarse</a>
+            <a href="contacts.html">Contactos</a>
+        </nav>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container">
+    <div style="max-width: 400px; margin: 40px auto;">
+        <div class="card" style="padding: 30px;">
+            <h2 style="text-align: center; margin-bottom: 10px;">Iniciar Sesión</h2>
+            <p class="small" style="text-align: center; margin-bottom: 25px;">Ingresa a tu cuenta para continuar</p>
+
+            <form id="loginForm">
+                <div style="margin-bottom: 20px;">
+                    <label class="label" for="lemail">Correo Electrónico</label>
+                    <input id="lemail" class="input" type="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div style="margin-bottom: 25px;">
+                    <label class="label" for="lpassword">Contraseña</label>
+                    <input id="lpassword" class="input" type="password" placeholder="Tu contraseña" required>
+                </div>
+
+                <button class="btn primary" type="submit" style="width: 100%;">Iniciar Sesión</button>
+
+                <div id="loginError" class="badge" style="background:var(--danger); color:white; margin-top:15px; text-align:center; display:none"></div>
+            </form>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a class="small" href="register.html">¿No tienes cuenta? Regístrate aquí</a>
+            </div>
+
+            <!-- Credenciales de prueba -->
+            <div style="margin-top: 25px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+                <p class="small" style="margin: 0; font-weight: bold;">Credenciales de prueba:</p>
+                <p class="small" style="margin: 5px 0 0 0;">
+                    Admin: <strong>admin@fusalmo.org</strong> / <strong>admin123</strong><br>
+                    O registra cualquier email
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginForm = document.getElementById('loginForm');
+
+        // Si ya está logueado, ir al index
+        const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
+        if (currentUser) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        if (loginForm) {
+            loginForm.onsubmit = async function(e) { // async aquí
+                e.preventDefault();
+
+                const email = document.getElementById('lemail').value.trim();
+                const password = document.getElementById('lpassword').value;
+
+                document.getElementById('loginError').style.display = 'none';
+
+                if (!email || !password) {
+                    showError('Por favor ingresa email y contraseña');
+                    return;
+                }
+
+                try {
+                    // AWAIT aquí: esperar la respuesta real
+                    const userData = await login(email, password);
+                    if (userData) {
+                        window.location.href = 'index.html';
+                    }
+                } catch (error) {
+                    // Mostrar error real del backend
+                    showError('Error: ' + error.message);
+                }
+            };
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('loginError');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>

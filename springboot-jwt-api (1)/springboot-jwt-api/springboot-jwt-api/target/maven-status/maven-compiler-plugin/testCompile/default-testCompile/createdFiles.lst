@@ -1,0 +1,4 @@
+com\example\api\service\AuthServiceTest.class
+com\example\api\SpringbootJwtApiApplicationTests.class
+com\example\api\controller\AuthControllerTest.class
+com\example\api\security\JwtServiceTest.class

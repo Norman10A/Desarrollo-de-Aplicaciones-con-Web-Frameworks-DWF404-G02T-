@@ -1,0 +1,344 @@
+/* Variables CSS - Tema Blanco Moderno */
+:root {
+    --bg: #ffffff;
+    --card: #f8f9fa;
+    --ink: #2c3e50;
+    --muted: #6c757d;
+    --brand: #3498db;
+    --brand-2: #2980b9;
+    --border: #dee2e6;
+    --ok: #27ae60;
+    --warn: #f39c12;
+    --danger: #e74c3c;
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(52, 152, 219, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--ink);
+    background-color: var(--bg);
+}
+
+body {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+/* Header */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand);
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.header nav a.active, .header nav a:hover {
+    color: var(--brand);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+/* Contenido principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Tarjetas */
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: var(--brand);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--brand-2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn.primary {
+    background: var(--brand);
+    border-color: var(--brand);
+}
+
+.btn.danger {
+    background: var(--danger);
+    border-color: var(--danger);
+}
+
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Formularios */
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--border);
+    background: white;
+    color: var(--ink);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Grids */
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Hero section */
+.hero {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.hero .left, .hero .right {
+    flex: 1;
+}
+
+.hero .box {
+    padding: 2rem;
+}
+
+/* Elementos de texto */
+.kbd {
+    font-family: 'Courier New', monospace;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+/* Tarjetas de cursos */
+.course-card {
+    padding: 1.5rem;
+}
+
+.course-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+}
+
+.course-card h4 {
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+}
+
+.course-card .meta {
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}
+
+/* Navegación de categorías */
+.navcats {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.navcats .chip {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 2px solid var(--border);
+    background: white;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navcats .chip.active, .navcats .chip:hover {
+    background: var(--brand);
+    color: white;
+    border-color: var(--brand);
+}
+
+/* Footer */
+.footer {
+    margin: 3rem 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.875rem;
+}
+
+.small {
+    font-size: 0.875rem;
+    color: var(--muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.admin-bar {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid.cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        flex-direction: column;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .header .row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid.cols-2, .grid.cols-3, .grid.cols-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+}

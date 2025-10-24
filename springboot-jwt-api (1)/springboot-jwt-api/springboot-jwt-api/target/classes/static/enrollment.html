@@ -1,0 +1,93 @@
+<!-- enrollment.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción - Fusalmo Cursos</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="header">
+    <div class="row">
+        <div class="brand">
+            <span class="dot"></span> <span>Fusalmo Cursos</span>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacts.html">Contactos</a>
+            <a href="javascript:void(0)" id="userpill" class="badge" style="display: none;"></a>
+            <a href="javascript:void(0)" id="logoutBtn" class="btn danger small" onclick="logout()" style="display: none; margin-left: 10px;">Cerrar Sesión</a>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Inscripción al Curso</h1>
+    <div id="courseInfo" style="margin-bottom: 20px;">
+        <!-- Se llenará con JS -->
+    </div>
+
+    <form id="enrollmentForm">
+        <div class="form-row">
+            <div>
+                <label class="label">Nombre del Estudiante *</label>
+                <input id="studentName" class="input" required>
+            </div>
+            <div>
+                <label class="label">Apellido del Estudiante *</label>
+                <input id="studentLastName" class="input" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label class="label">Edad del Estudiante *</label>
+                <input id="studentAge" class="input" type="number" min="5" max="18" required>
+            </div>
+            <div>
+                <label class="label">Sede *</label>
+                <select id="branch" class="input" required>
+                    <option value="">Selecciona una sede</option>
+                    <option value="Fusalmo Soyapango">Fusalmo Soyapango</option>
+                    <option value="Fusalmo Santa Ana">Fusalmo Santa Ana</option>
+                    <option value="Fusalmo San Miguel">Fusalmo San Miguel</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label class="label">Nombre del Padre/Madre/Tutor *</label>
+                <input id="parentName" class="input" required>
+            </div>
+            <div>
+                <label class="label">DUI del Padre/Madre/Tutor *</label>
+                <input id="parentDui" class="input" placeholder="Ej: 12345678-9" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label class="label">Correo Electrónico *</label>
+                <input id="email" class="input" type="email" required>
+            </div>
+            <div>
+                <label class="label">Teléfono *</label>
+                <input id="phone" class="input" placeholder="Ej: 7000-0000" required>
+            </div>
+        </div>
+
+        <div style="margin: 15px 0;">
+            <label class="label">Mensaje (opcional)</label>
+            <textarea id="message" class="input" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn primary">✅ Inscribirme</button>
+        <button type="button" class="btn" onclick="window.history.back()">Cancelar</button>
+    </form>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

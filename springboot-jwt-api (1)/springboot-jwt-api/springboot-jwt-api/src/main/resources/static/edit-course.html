@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Curso - Fusalmo Cursos</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+    <div class="row">
+        <div class="brand">
+            <span class="dot"></span> <span>Fusalmo Cursos</span>
+        </div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacts.html">Contactos</a>
+            <a href="javascript:void(0)" id="userpill" class="badge" style="display: none;"></a>
+            <a href="javascript:void(0)" id="logoutBtn" class="btn danger small" onclick="logout()" style="display: none; margin-left: 10px;">Cerrar Sesión</a>
+        </nav>
+    </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container">
+    <h1>Editar Curso</h1>
+    <div id="editCourseForm">
+        <form>
+            <div class="form-row">
+                <div>
+                    <label class="label" for="cTitle">Título del Curso</label>
+                    <input id="cTitle" class="input" placeholder="Nombre del curso" required>
+                </div>
+                <div>
+                    <label class="label" for="cCategory">Categoría *</label>
+                    <select id="cCategory" class="input" required>
+                        <option value="">Cargando categorías...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label class="label" for="cImage">Imagen (URL)</label>
+                    <input id="cImage" class="input" type="text" placeholder="assets/default-course.jpg" required>
+                </div>
+                <div>
+                    <label class="label" for="cCap">Capacidad</label>
+                    <input id="cCap" class="input" type="number" placeholder="20" required>
+                </div>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label class="label" for="cShort">Descripción Corta</label>
+                <textarea id="cShort" class="input" rows="2" placeholder="Breve descripción" required></textarea>
+            </div>
+
+            <div style="margin: 15px 0;">
+                <label class="label" for="cInfo">Información Detallada</label>
+                <textarea id="cInfo" class="input" rows="4" placeholder="Información completa del curso" required></textarea>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button type="submit" class="btn primary">Guardar Cambios</button>
+                <button type="button" id="cancelEditBtn" class="btn">Cancelar</button>
+                <button type="button" id="deleteCourseBtn" class="btn danger">Eliminar Curso</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

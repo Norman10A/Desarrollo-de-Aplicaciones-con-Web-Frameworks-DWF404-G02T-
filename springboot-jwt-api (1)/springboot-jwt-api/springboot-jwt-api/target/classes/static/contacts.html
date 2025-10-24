@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactos - Fusalmo Cursos</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="header">
+  <div class="row">
+    <div class="brand">
+      <span class="dot"></span> <span>Fusalmo Cursos</span>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="contacts.html" class="active">Contactos</a>
+      <a href="javascript:void(0)" id="userpill" class="badge" style="display: none;"></a>
+      <a href="javascript:void(0)" class="btn danger small" onclick="logout()" style="display: none; margin-left: 10px;">Cerrar Sesión</a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card" style="padding:30px">
+    <h2>Contactos</h2>
+    <p class="small" style="margin-bottom: 25px;">Estamos aquí para ayudarte. Contáctanos a través de los siguientes medios:</p>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Área</th>
+        <th>Contacto</th>
+        <th>Acción</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Recepción General</td>
+        <td>Teléfono: <strong>+503 2222 0000</strong></td>
+        <td><a class="btn" href="tel:+50322220000"> Llamar</a></td>
+      </tr>
+      <tr>
+        <td>Admisiones</td>
+        <td><a href="mailto:admisiones@fusalmo.org">admisiones@fusalmo.org</a></td>
+        <td><a class="btn" href="mailto:admisiones@fusalmo.org">Enviar correo</a></td>
+      </tr>
+      <tr>
+        <td>Sitio Web Oficial</td>
+        <td><a href="https://www.fusalmo.org" target="_blank" rel="noopener">www.fusalmo.org</a></td>
+        <td><a class="btn" href="https://www.fusalmo.org" target="_blank" rel="noopener">Visitar</a></td>
+      </tr>
+      <tr>
+        <td>Soporte Técnico</td>
+        <td><a href="https://wa.me/50370000000" target="_blank" rel="noopener">WhatsApp: +503 7000 0000</a></td>
+        <td><a class="btn" href="https://wa.me/50370000000" target="_blank" rel="noopener">Chatear</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 30px; padding: 20px; background: #e7f3ff; border-radius: 8px;">
+      <h4 style="margin-bottom: 10px;"> Dirección</h4>
+      <p style="margin: 0;">Centro ¡Supérate! Fusalmo, San Salvador, El Salvador</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Verificar autenticación
+    const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
+    if (!currentUser) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    // Mostrar información del usuario
+    const userPill = document.getElementById('userpill');
+    if (userPill && currentUser) {
+      userPill.textContent = currentUser.email + (currentUser.isFusalmo ? " • Admin" : "");
+      userPill.style.display = 'inline-block';
+      userPill.nextElementSibling.style.display = 'inline-block';
+    }
+  });
+
+  function logout() {
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - Fusalmo Cursos</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<!-- Header -->
+<div class="header">
+  <div class="row">
+    <div class="brand">
+      <span class="dot"></span> <span>Fusalmo Cursos</span>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="login.html">Iniciar Sesión</a>
+      <a href="contacts.html">Contactos</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Contenido principal -->
+<div class="container">
+  <div style="max-width: 400px; margin: 40px auto;">
+    <div class="card" style="padding: 30px;">
+      <h2 style="text-align: center; margin-bottom: 10px;">Crear Cuenta</h2>
+      <p class="small" style="text-align: center; margin-bottom: 25px;">Regístrate para acceder a todos nuestros cursos</p>
+
+      <form id="registerForm">
+        <div style="margin-bottom: 20px;">
+          <label class="label" for="remail">Correo Electrónico</label>
+          <input id="remail" class="input" type="email" placeholder="tu@email.com" required>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <label class="label" for="rpassword">Contraseña</label>
+          <input id="rpassword" class="input" type="password" placeholder="Mínimo 6 caracteres" required minlength="6">
+        </div>
+
+        <div style="margin-bottom: 25px;">
+          <label class="label" for="rconfirm">Confirmar Contraseña</label>
+          <input id="rconfirm" class="input" type="password" placeholder="Repite tu contraseña" required>
+        </div>
+
+        <button class="btn primary" type="submit" style="width: 100%;">Crear Cuenta</button>
+
+        <div id="registerError" class="badge" style="background:var(--danger); color:white; margin-top:15px; text-align:center; display:none"></div>
+        <div id="registerSuccess" class="badge" style="background:var(--ok); color:white; margin-top:15px; text-align:center; display:none"></div>
+      </form>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <a class="small" href="login.html">¿Ya tienes cuenta? Inicia sesión aquí</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const registerForm = document.getElementById('registerForm');
+
+    const currentUser = JSON.parse(localStorage.getItem('user') || 'null');
+    if (currentUser) {
+      window.location.href = 'index.html';
+      return;
+    }
+
+    if (registerForm) {
+      registerForm.onsubmit = async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('remail').value.trim();
+        const password = document.getElementById('rpassword').value;
+        const confirmPassword = document.getElementById('rconfirm').value;
+
+        document.getElementById('registerError').style.display = 'none';
+        document.getElementById('registerSuccess').style.display = 'none';
+
+        if (password !== confirmPassword) {
+          showError('Las contraseñas no coinciden');
+          return;
+        }
+        if (password.length < 6) {
+          showError('La contraseña debe tener al menos 6 caracteres');
+          return;
+        }
+        if (!email) {
+          showError('El email es requerido');
+          return;
+        }
+
+        try {
+          // ✅ AWAIT aquí
+          const userData = await register(email, password);
+          if (userData) {
+            showSuccess('✅ Cuenta creada exitosamente. Redirigiendo...');
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 2000);
+          }
+        } catch (error) {
+          showError('Error en el registro: ' + error.message);
+        }
+      };
+    }
+
+    function showError(message) {
+      const errorDiv = document.getElementById('registerError');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+
+    function showSuccess(message) {
+      const successDiv = document.getElementById('registerSuccess');
+      successDiv.textContent = message;
+      successDiv.style.display = 'block';
+    }
+  });
+</script>
+</body>
+</html>
